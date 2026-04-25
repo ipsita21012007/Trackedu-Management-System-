@@ -21,11 +21,13 @@ const dbConfig = {
     password: process.env.DB_PASSWORD || 'xRWFf4Ph5D8xkds2',
     database: process.env.DB_NAME || 'schema_project',
     port: process.env.DB_PORT || 4000,
-    ssl: {
-        rejectUnauthorized: true
-    },
     multipleStatements: true
 };
+
+// Enable SSL only if using a cloud database (not localhost)
+if (dbConfig.host !== 'localhost' && dbConfig.host !== '127.0.0.1') {
+    dbConfig.ssl = { rejectUnauthorized: true };
+}
 
 const pool = mysql.createPool(dbConfig);
 const promisePool = pool.promise();
