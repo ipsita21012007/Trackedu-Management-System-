@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '../.env' }); // Load .env from root directory
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -13,11 +14,14 @@ app.use(express.static('../frontend/public')); // Serve frontend
 
 // Database configuration
 const dbConfig = {
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'admin',
+    host: process.env.DB_HOST || 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com',
+    user: process.env.DB_USER || 'w8ZTE3yC69zmPLe.root',
+    password: process.env.DB_PASSWORD || 'xRWFf4Ph5D8xkds2',
     database: process.env.DB_NAME || 'schema_project',
-    port: process.env.DB_PORT || 3306,
+    port: process.env.DB_PORT || 4000,
+    ssl: {
+        rejectUnauthorized: true
+    },
     multipleStatements: true
 };
 

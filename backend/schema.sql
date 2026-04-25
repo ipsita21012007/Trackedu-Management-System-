@@ -57,19 +57,7 @@ CREATE TABLE ComplianceReport (
     Generated_By VARCHAR(100),
     Generated_Reference VARCHAR(200)
 );
--- Trigger: Update Student academic_status to "Industry Engaged" on Internship addition
-DELIMITER $$
 
-CREATE TRIGGER trg_update_academic_status
-AFTER INSERT ON Internship
-FOR EACH ROW
-BEGIN
-    UPDATE Student
-    SET Academic_Status = 'Industry Engaged'
-    WHERE Student_ID = NEW.Student_ID;
-END$$
-
-DELIMITER ;
 INSERT INTO Student VALUES
 (1, 'Aarav Sharma', 'RA101', 'AI/ML', 'Online', 'Good progress', 'Active'),
 (2, 'Diya Patel', 'RA102', 'Web Dev', 'Offline', 'Needs improvement', 'Active'),
