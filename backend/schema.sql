@@ -1,4 +1,6 @@
-USE schema_project;
+CREATE DATABASE trackedu_db;
+USE trackedu_db;
+
 CREATE TABLE Student (
     Student_ID INT PRIMARY KEY,
     Name VARCHAR(100),
